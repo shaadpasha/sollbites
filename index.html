@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SollBites - Craving Something Delicious?</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Assuming bg.jpg is the second image you provided -->
+    <div class="background-container">
+        
+        <header class="header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <img src="logo.png" alt="SollBites Logo">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="order.html">Order</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="cart-btn" onclick="window.location.href='cart.html'">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bag-icon">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span>0 | My Order</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="hero-content">
+            <div class="badge animate-on-load">
+                <span class="fire-icon">🔥</span>
+                <span class="badge-text">Hot. Fresh. Delivered Fast.</span>
+            </div>
+            
+            <h1 class="main-title animate-on-load">
+                <span class="text-white">Craving</span><br>
+                <span class="text-white">Something</span><br>
+                <span class="text-yellow">Delicious?</span>
+            </h1>
+            
+            <p class="subtitle animate-on-load">
+                Order your favourite pizza, burgers, rolls<br>
+                and more. Fast delivery at your doorstep!
+            </p>
+            
+            <div class="cta-group animate-on-load">
+                <button class="btn btn-primary" onclick="window.location.href='order.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5H18c2.2 0 4 1.8 4 4v8Z"></path>
+                        <circle cx="7" cy="17" r="2"></circle>
+                        <circle cx="17" cy="17" r="2"></circle>
+                        <path d="M7 15h10"></path>
+                    </svg>
+                    Order Now
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='order.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    View Menu
+                </button>
+            </div>
+            
+            <div class="features-row animate-on-load">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path>
+                            <circle cx="7" cy="17" r="2"></circle>
+                            <path d="M9 17h6"></path>
+                            <circle cx="17" cy="17" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <div class="f-title">Fast Delivery</div>
+                        <div class="f-desc">30–40 min</div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFB800" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <div class="f-title">Best Quality</div>
+                        <div class="f-desc">Always Fresh</div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <rect x="9" y="9" width="6" height="6" rx="1" fill="#FFB800"></rect>
+                            <path d="M12 11v2" stroke="#000" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <div class="f-title">Secure Payment</div>
+                        <div class="f-desc">100% Safe</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="global.js"></script>
+</body>
+</html>
