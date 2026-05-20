@@ -14,8 +14,8 @@ body {
 .background-container {
     width: 100vw;
     min-height: 100vh;
-    /* Use the user-provided image */
-    background-image: url('bg.jpg');
+    /* Added a top gradient to cover the baked-in logo in the original image */
+    background-image: linear-gradient(to bottom, #050505 0%, #050505 8%, transparent 20%), url('bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
