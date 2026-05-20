@@ -187,8 +187,86 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (document.getElementById('btn-online')) {
-        document.getElementById('btn-online').addEventListener('click', () => {
-            alert("Razorpay integration will be enabled after Vercel deployment.");
+        document.getElementById('btn-online').addEventListener('click', async () => {
+            const totalText = document.getElementById("summary-total").textContent.replace('₹', '');
+            const orderTotal = parseFloat(totalText);
+            
+            if (orderTotal < 1) {
+                alert("Minimum order amount for online payment is ₹1.");
+                return;
+            }
+            
+            // Amount in paise
+            const amountInPaise = Math.round(orderTotal * 100);
+            
+            try {
+                const response = await fetch('/api/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: amountInPaise })
+                });
+                
+                const orderData = await response.json();
+                
+                if (!response.ok) {
+                    alert("Failed to initiate payment: " + (orderData.error || "Unknown error"));
+                    return;
+                }
+                
+                const options = {
+                    "key": "rzp_test_SrlNbf5P5T7St2", 
+                    "amount": orderData.amount,
+                    "currency": orderData.currency,
+                    "name": "SollBites",
+                    "description": "Food Order Payment",
+                    "order_id": orderData.id,
+                    "handler": async function (response) {
+                        try {
+                            const verifyRes = await fetch('/api/verify-payment', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            });
+                            
+                            const verifyData = await verifyRes.json();
+                            
+                            if (verifyData.success) {
+                                paymentModal.style.display = 'none';
+                                processOrder();
+                                if(successModal) successModal.style.display = 'flex';
+                            } else {
+                                alert("Payment verification failed! Please contact support.");
+                            }
+                        } catch (err) {
+                            alert("Error verifying payment.");
+                            console.error(err);
+                        }
+                    },
+                    "prefill": {
+                        "name": document.getElementById("checkout-name").value.trim(),
+                        "contact": document.getElementById("checkout-phone").value.trim()
+                    },
+                    "theme": {
+                        "color": "#FFB800"
+                    }
+                };
+                
+                const rzp = new Razorpay(options);
+                
+                rzp.on('payment.failed', function (response){
+                    alert("Payment Failed. Reason: " + response.error.description);
+                });
+                
+                rzp.open();
+                
+            } catch (error) {
+                console.error(error);
+                alert("Error connecting to payment server.");
+            }
         });
     }
 
