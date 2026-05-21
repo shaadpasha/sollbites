@@ -155,6 +155,20 @@ function addNewDish() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Check authentication
+    if (sessionStorage.getItem('sollbites_admin_auth') !== 'true') {
+        let pwd = prompt("Enter Admin Password:");
+        while (pwd !== "sollbitesadmin") {
+            if (pwd === null) {
+                // User cancelled, redirect to home
+                window.location.href = "index.html";
+                return;
+            }
+            pwd = prompt("Incorrect password. Try again:");
+        }
+        sessionStorage.setItem('sollbites_admin_auth', 'true');
+    }
+
     loadOrders();
     handleImageUpload();
 });
